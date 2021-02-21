@@ -24,7 +24,8 @@ public class HomeFragment extends Fragment {
 
         ArrayList<Trip> trips = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
-            Trip trip = new Trip(getResources().getString(R.string.mock_text), getResources().getString(R.string.mock_text), 4.5, false);
+            Trip trip = new Trip(getString(R.string.mock_text), getString(R.string.mock_text),
+                    4.5, false);
             trips.add(trip);
         }
 
