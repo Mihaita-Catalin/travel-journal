@@ -1,4 +1,4 @@
-package com.example.traveljournal.trip;
+package com.example.traveljournal.recyclerView;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.traveljournal.R;
+import com.example.traveljournal.models.Trip;
+import com.example.traveljournal.recyclerView.TripViewHolder;
 
 import java.util.List;
 

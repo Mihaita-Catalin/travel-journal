@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.traveljournal.R;
-import com.example.traveljournal.trip.Trip;
-import com.example.traveljournal.trip.TripAdapter;
+import com.example.traveljournal.models.Trip;
+import com.example.traveljournal.recyclerView.TripAdapter;
 
 import java.util.ArrayList;
 

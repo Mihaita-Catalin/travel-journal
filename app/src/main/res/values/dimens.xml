@@ -11,4 +11,6 @@
     <dimen name="title_size">24sp</dimen>
     <dimen name="text_size">16sp</dimen>
     <dimen name="rating_text_size">18sp</dimen>
+    <dimen name="add_or_edit_trip_text_size">16sp</dimen>
+    <dimen name="save_button_height">64dp</dimen>
 </resources>

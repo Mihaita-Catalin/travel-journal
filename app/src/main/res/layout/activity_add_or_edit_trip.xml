@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddOrEditTripActivity"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/small_margin">
+
+    <LinearLayout
+        style="@style/LinearLayoutAddOrEditTripStyle"
+        android:layout_marginTop="@dimen/small_margin">
+
+        <TextView
+            style="@style/TextViewTitleAddOrEditTripStyle"
+            android:text="@string/trip_name" />
+
+        <EditText
+            android:id="@+id/editTextTripName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@android:drawable/ic_menu_info_details" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LinearLayoutAddOrEditTripStyle">
+
+        <TextView
+            style="@style/TextViewTitleAddOrEditTripStyle"
+            android:text="@string/destination" />
+
+        <EditText
+            android:id="@+id/editTextDestination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@android:drawable/ic_menu_myplaces" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LinearLayoutAddOrEditTripStyle">
+
+        <TextView
+            style="@style/TextViewTitleAddOrEditTripStyle"
+            android:text="@string/trip_type" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupTripType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/small_margin">
+
+            <RadioButton
+                android:id="@+id/radioButtonCityBreak"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/city_break" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSeaside"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/seaside" />
+
+            <RadioButton
+                android:id="@+id/radioButtonMountains"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/mountains" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LinearLayoutAddOrEditTripStyle">
+
+        <TextView
+            android:id="@+id/textViewSeekBar"
+            style="@style/TextViewTitleAddOrEditTripStyle"
+            android:text="@string/price_0_euros" />
+
+        <SeekBar
+            android:id="@+id/seekBarPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/small_margin">
+
+            <TextView
+                style="@style/TextViewTitleAddOrEditTripStyle"
+                android:text="@string/start_date" />
+
+            <Button
+                android:id="@+id/buttonStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/date_format"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/small_margin">
+
+            <TextView
+                style="@style/TextViewTitleAddOrEditTripStyle"
+                android:text="@string/end_date" />
+
+            <Button
+                android:id="@+id/end_date_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/date_format" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LinearLayoutAddOrEditTripStyle">
+
+        <TextView
+            style="@style/TextViewTitleAddOrEditTripStyle"
+            android:text="@string/rating" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save_trip_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/save_button_height"
+        android:text="@string/save"
+        android:textColor="@color/black"
+        android:background="@color/design_default_color_primary"
+        android:textSize="@dimen/add_or_edit_trip_text_size"
+        android:layout_marginBottom="@dimen/small_margin" />
+</LinearLayout>

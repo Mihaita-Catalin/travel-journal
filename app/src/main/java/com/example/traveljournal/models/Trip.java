@@ -1,4 +1,4 @@
-package com.example.traveljournal.trip;
+package com.example.traveljournal.models;
 
 public class Trip {
 

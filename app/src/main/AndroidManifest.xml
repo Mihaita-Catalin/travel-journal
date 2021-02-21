@@ -9,10 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelJournal">
+        <activity android:name=".AddOrEditTripActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".NavigationDrawerActivity" />
+        </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".NavigationDrawerActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.TravelJournal.NoActionBar"></activity>
+            android:theme="@style/Theme.TravelJournal.NoActionBar" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

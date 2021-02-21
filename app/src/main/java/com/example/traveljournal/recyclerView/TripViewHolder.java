@@ -1,4 +1,4 @@
-package com.example.traveljournal.trip;
+package com.example.traveljournal.recyclerView;
 
 import android.view.View;
 import android.widget.ImageView;
