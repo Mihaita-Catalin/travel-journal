@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.traveljournal.R;
-import com.example.traveljournal.TripAdapter;
+import com.example.traveljournal.trip.Trip;
+import com.example.traveljournal.trip.TripAdapter;
 
 import java.util.ArrayList;
 
@@ -21,15 +22,15 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        ArrayList<String> mock = new ArrayList<>();
+        ArrayList<Trip> trips = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
-            mock.add("Hello");
+            Trip trip = new Trip(getResources().getString(R.string.mock_text), getResources().getString(R.string.mock_text), 4.5, false);
+            trips.add(trip);
         }
 
-        RecyclerView recyclerViewMock = root.findViewById(R.id.recyclerViewTrips);
-        recyclerViewMock.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        recyclerViewMock.setAdapter(new TripAdapter(getActivity(), mock));
+        RecyclerView recyclerViewTrips = root.findViewById(R.id.recyclerViewTrips);
+        recyclerViewTrips.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewTrips.setAdapter(new TripAdapter(getActivity(), trips));
 
         return root;
     }

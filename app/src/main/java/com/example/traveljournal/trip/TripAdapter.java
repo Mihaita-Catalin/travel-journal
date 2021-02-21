@@ -1,4 +1,4 @@
-package com.example.traveljournal;
+package com.example.traveljournal.trip;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,14 +8,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.traveljournal.R;
+
 import java.util.List;
 
 public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
 
-    private List<String> trips;
+    private List<Trip> trips;
     private Context context;
 
-    public TripAdapter(Context context, List<String> trips) {
+    public TripAdapter(Context context, List<Trip> trips) {
         this.trips = trips;
         this.context = context;
     }
@@ -29,8 +31,12 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
-        String currentString = trips.get(position);
-        holder.getTextViewMock().setText(currentString);
+        Trip currentTrip = trips.get(position);
+        holder.getImageViewTrip().setImageResource(R.drawable.ic_baseline_airplane);
+        holder.getTextViewTitle().setText(currentTrip.getTitle());
+        holder.getTextViewDestination().setText(currentTrip.getDestination());
+        holder.getTextViewRating().setText(String.valueOf(currentTrip.getRating()));
+        holder.getImageViewBookmarked().setImageResource(R.drawable.ic_baseline_not_bookmarked);
     }
 
     @Override
