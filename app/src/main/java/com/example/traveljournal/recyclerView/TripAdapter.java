@@ -10,24 +10,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.traveljournal.R;
 import com.example.traveljournal.models.Trip;
-import com.example.traveljournal.recyclerView.TripViewHolder;
 
 import java.util.List;
 
 public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
 
+    private final LayoutInflater inflater;
     private List<Trip> trips;
-    private Context context;
 
-    public TripAdapter(Context context, List<Trip> trips) {
-        this.trips = trips;
-        this.context = context;
+    public TripAdapter(Context context) {
+        inflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public TripViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.trip_item, parent, false);
+        View itemView = inflater.inflate(R.layout.trip_item, parent, false);
         return new TripViewHolder(itemView);
     }
 
@@ -41,8 +39,17 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
         holder.getImageViewBookmarked().setImageResource(R.drawable.ic_baseline_not_bookmarked);
     }
 
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
-        return trips.size();
+        if (trips != null) {
+            return trips.size();
+        } else {
+            return 0;
+        }
     }
 }
