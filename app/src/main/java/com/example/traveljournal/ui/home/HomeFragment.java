@@ -34,6 +34,7 @@ public class HomeFragment extends Fragment {
 
     private TripViewModel tripViewModel;
     private TripAdapter tripAdapter;
+    private Trip trip;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,46 +57,51 @@ public class HomeFragment extends Fragment {
         });
 
         recyclerViewTrips.addOnItemTouchListener(
-                new RecyclerItemClickListener(getActivity(), recyclerViewTrips, new RecyclerItemClickListener.OnItemClickListener() {
+                new RecyclerItemClickListener(getActivity(), recyclerViewTrips,
+                        new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Intent i = new Intent(getActivity(), ViewTripActivity.class);
                         tripViewModel.getAllTrips().observe(getActivity(), trips -> {
-                            i.putExtra(AddOrEditTripActivity.TRIP_TITLE, trips.get(position).getTitle());
-                            i.putExtra(AddOrEditTripActivity.DESTINATION, trips.get(position).getDestination());
-                            i.putExtra(AddOrEditTripActivity.TRIP_TYPE, trips.get(position).getType());
-                            i.putExtra(AddOrEditTripActivity.PRICE, Integer.toString(trips.get(position).getPrice()));
-                            i.putExtra(AddOrEditTripActivity.START_DATE, trips.get(position).getStartDate().toString());
-                            i.putExtra(AddOrEditTripActivity.END_DATE, trips.get(position).getEndDate().toString());
-                            i.putExtra(AddOrEditTripActivity.RATING, Double.toString(trips.get(position).getRating()));
+                            i.putExtra(AddOrEditTripActivity.TRIP_TITLE, trips.get(position)
+                                    .getTitle());
+                            i.putExtra(AddOrEditTripActivity.DESTINATION, trips.get(position)
+                                    .getDestination());
+                            i.putExtra(AddOrEditTripActivity.TRIP_TYPE, trips.get(position)
+                                    .getType());
+                            i.putExtra(AddOrEditTripActivity.PRICE, Integer.toString(trips
+                                    .get(position).getPrice()));
+                            i.putExtra(AddOrEditTripActivity.START_DATE, trips.get(position)
+                                    .getStartDate().toString());
+                            i.putExtra(AddOrEditTripActivity.END_DATE, trips.get(position)
+                                    .getEndDate().toString());
+                            i.putExtra(AddOrEditTripActivity.RATING, Double.toString(trips
+                                    .get(position).getRating()));
                         });
                         startActivity(i);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
                         Intent i = new Intent(getActivity(), AddOrEditTripActivity.class);
-                        final String[] title = new String[1];
-                        final String[] destination = new String[1];
-                        final String[] type = new String[1];
-                        final int[] price = new int[1];
-                        final String[] startDateString = new String[1];
-                        final String[] endDateString = new String[1];
-                        final double[] rating = new double[1];
                         tripViewModel.getAllTrips().observe(getActivity(), trips -> {
-                            title[0] = trips.get(position).getTitle();
-                            destination[0] = trips.get(position).getDestination();
-                            type[0] = trips.get(position).getType();
-                            price[0] = trips.get(position).getPrice() / AddOrEditTripActivity.MULTIPLICATION_FACTOR;
-                            startDateString[0] = trips.get(position).getStartDate().toString();
-                            endDateString[0] = trips.get(position).getEndDate().toString();
-                            rating[0] = trips.get(position).getRating();
+                            trip = trips.get(position);
+                            i.putExtra(AddOrEditTripActivity.TRIP_TITLE, trips.get(position)
+                                    .getTitle());
+                            i.putExtra(AddOrEditTripActivity.DESTINATION, trips.get(position)
+                                    .getDestination());
+                            i.putExtra(AddOrEditTripActivity.TRIP_TYPE, trips.get(position)
+                                    .getType());
+                            i.putExtra(AddOrEditTripActivity.PRICE, Integer.toString(trips
+                                    .get(position)
+                                    .getPrice() / AddOrEditTripActivity.MULTIPLICATION_FACTOR));
+                            i.putExtra(AddOrEditTripActivity.START_DATE, trips.get(position)
+                                    .getStartDate().toString());
+                            i.putExtra(AddOrEditTripActivity.END_DATE, trips.get(position)
+                                    .getEndDate().toString());
+                            i.putExtra(AddOrEditTripActivity.RATING, Double.toString(trips
+                                    .get(position).getRating()));
+                            i.putExtra(AddOrEditTripActivity.FAVORITE, trips.get(position)
+                                    .isFavorite());
                         });
-                        i.putExtra(AddOrEditTripActivity.TRIP_TITLE, title[0]);
-                        i.putExtra(AddOrEditTripActivity.DESTINATION, destination[0]);
-                        i.putExtra(AddOrEditTripActivity.TRIP_TYPE, type[0]);
-                        i.putExtra(AddOrEditTripActivity.PRICE, Integer.toString(price[0]));
-                        i.putExtra(AddOrEditTripActivity.START_DATE, startDateString[0]);
-                        i.putExtra(AddOrEditTripActivity.END_DATE, endDateString[0]);
-                        i.putExtra(AddOrEditTripActivity.RATING, Double.toString(rating[0]));
                         startActivityForResult(i, NEW_TRIP_ACTIVITY_REQUEST_CODE);
                     }
                 })
@@ -116,6 +122,8 @@ public class HomeFragment extends Fragment {
             String startDateString = data.getStringExtra(AddOrEditTripActivity.START_DATE);
             String endDateString = data.getStringExtra(AddOrEditTripActivity.END_DATE);
             double rating = Double.parseDouble(data.getStringExtra(AddOrEditTripActivity.RATING));
+            boolean isFavorite = data.getBooleanExtra(AddOrEditTripActivity.FAVORITE,
+                    false);
 
             SimpleDateFormat format = new SimpleDateFormat("d/M/y");
             Date startDate = null;
@@ -126,9 +134,22 @@ public class HomeFragment extends Fragment {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            Trip trip = new Trip(title, destination, type, price, startDate, endDate, rating,
-                    false);
-            tripViewModel.insert(trip);
+
+            if (data.getStringExtra(AddOrEditTripActivity.WAS) != null) {
+                trip.setTitle(title);
+                trip.setDestination(destination);
+                trip.setType(type);
+                trip.setPrice(price);
+                trip.setStartDate(startDate);
+                trip.setEndDate(endDate);
+                trip.setRating(rating);
+                trip.setFavorite(isFavorite);
+                tripViewModel.updateTrip(trip);
+            } else {
+                Trip trip = new Trip(title, destination, type, price, startDate, endDate, rating,
+                        isFavorite);
+                tripViewModel.insert(trip);
+            }
         }
     }
 }

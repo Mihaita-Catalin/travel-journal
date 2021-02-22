@@ -15,8 +15,6 @@ import com.example.traveljournal.retrofit.WeatherResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ViewTripActivity extends AppCompatActivity {
 
@@ -57,21 +55,28 @@ public class ViewTripActivity extends AppCompatActivity {
             textViewLocation.setText(extras.getString(AddOrEditTripActivity.DESTINATION));
             textViewTripName.setText(extras.getString(AddOrEditTripActivity.TRIP_TITLE));
             textViewTripType.setText(extras.getString(AddOrEditTripActivity.TRIP_TYPE));
-            tripRating.setRating((float) Double.parseDouble(extras.getString(AddOrEditTripActivity.RATING)));
-            String [] startDateArray = extras.getString(AddOrEditTripActivity.START_DATE).split(" ");
-            String [] endDateArray = extras.getString(AddOrEditTripActivity.END_DATE).split(" ");
-            textViewStartDate.setText(startDateArray[2] + " " + startDateArray[1] + " " + startDateArray[5]);
-            textViewEndDate.setText(endDateArray[2] + " " + endDateArray[1] + " " + endDateArray[5]);
+            tripRating.setRating((float) Double.parseDouble(extras.getString(AddOrEditTripActivity
+                    .RATING)));
+            String [] startDateArray = extras.getString(AddOrEditTripActivity.START_DATE)
+                    .split(" ");
+            String [] endDateArray = extras.getString(AddOrEditTripActivity.END_DATE)
+                    .split(" ");
+            textViewStartDate.setText(startDateArray[2] + " " + startDateArray[1] + " " +
+                    startDateArray[5]);
+            textViewEndDate.setText(endDateArray[2] + " " + endDateArray[1] + " " +
+                    endDateArray[5]);
             textViewPrice.setText(extras.getString(AddOrEditTripActivity.PRICE) + " EUROS");
         }
     }
 
     void getCurrentData() {
         GetData service = RetrofitObj.getRetrofitInstance().create(GetData.class);
-        Call<WeatherResponse> call = service.getCurrentWeatherData(textViewLocation.getText().toString(), RetrofitObj.AppId);
+        Call<WeatherResponse> call = service.getCurrentWeatherData(textViewLocation.getText()
+                .toString(), RetrofitObj.AppId);
         call.enqueue(new Callback<WeatherResponse>() {
             @Override
-            public void onResponse(@NonNull Call<WeatherResponse> call, @NonNull Response<WeatherResponse> response) {
+            public void onResponse(@NonNull Call<WeatherResponse> call,
+                                   @NonNull Response<WeatherResponse> response) {
                 if (response.code() == 200) {
                     WeatherResponse weatherResponse = response.body();
                     assert weatherResponse != null;

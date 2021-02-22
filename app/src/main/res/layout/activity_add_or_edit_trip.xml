@@ -148,6 +148,16 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/buttonMakeFavorite"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/save_button_height"
+        android:text="@string/mark_as_favorite"
+        android:textColor="@color/black"
+        android:background="@color/design_default_color_primary"
+        android:textSize="@dimen/add_or_edit_trip_text_size"
+        android:layout_marginBottom="@dimen/small_margin" />
+
+    <Button
         android:id="@+id/buttonSaveTrip"
         android:layout_width="match_parent"
         android:layout_height="@dimen/save_button_height"

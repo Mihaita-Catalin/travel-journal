@@ -36,16 +36,11 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
         holder.getTextViewTitle().setText(currentTrip.getTitle());
         holder.getTextViewDestination().setText(currentTrip.getDestination());
         holder.getTextViewRating().setText(String.valueOf(currentTrip.getRating()));
-        holder.getImageViewBookmarked().setImageResource(R.drawable.ic_baseline_not_bookmarked);
-        holder.getImageViewBookmarked().setOnClickListener(v -> {
-            if (currentTrip.isFavorite()) {
-                holder.getImageViewBookmarked().setImageResource(R.drawable.ic_baseline_not_bookmarked);
-                currentTrip.setFavorite(false);
-            } else {
-                holder.getImageViewBookmarked().setImageResource(R.drawable.ic_baseline_bookmarked);
-                currentTrip.setFavorite(true);
-            }
-        });
+        if (currentTrip.isFavorite()) {
+            holder.getImageViewBookmarked().setImageResource(R.drawable.ic_baseline_bookmarked);
+        } else {
+            holder.getImageViewBookmarked().setImageResource(R.drawable.ic_baseline_not_bookmarked);
+        }
     }
 
     public void setTrips(List<Trip> trips) {
