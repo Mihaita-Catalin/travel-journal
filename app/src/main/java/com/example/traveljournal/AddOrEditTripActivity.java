@@ -92,27 +92,27 @@ public class AddOrEditTripActivity extends AppCompatActivity implements DatePick
 
         ratingBar = findViewById(R.id.ratingBar);
 
-//        Bundle extras = getIntent().getExtras();
-//        if (extras != null) {
-//            wasAlready = true;
-//            editTextTripTitle.setText(extras.getString(TRIP_TITLE));
-//            editTextDestination.setText(extras.getString(DESTINATION));
-//            if (extras.getString(TRIP_TYPE) == getString(R.string.city_break)) {
-//                radioGroupTripType.check(R.id.radioButtonCityBreak);
-//            } else if (extras.getString(TRIP_TYPE) == getString(R.string.seaside)) {
-//                radioGroupTripType.check(R.id.radioButtonSeaside);
-//            } else if (extras.getString(TRIP_TYPE) == getString(R.string.mountains)) {
-//                radioGroupTripType.check(R.id.radioButtonMountains);
-//            }
-//            seekBarPrice.setProgress(Integer.parseInt(extras.getString(PRICE)));
-//            textViewSeekBar.setText("Price (" + seekBarPrice.getProgress() *
-//                    MULTIPLICATION_FACTOR + " EUROS)");
-//            startDateString = extras.getString(START_DATE);
-//            endDateString = extras.getString(END_DATE);
-//            buttonStartDate.setHint(startDateString);
-//            buttonEndDate.setHint(endDateString);
-//            ratingBar.setRating((float) Double.parseDouble(extras.getString(RATING)));
-//        }
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            wasAlready = true;
+            editTextTripTitle.setText(extras.getString(TRIP_TITLE));
+            editTextDestination.setText(extras.getString(DESTINATION));
+            if (extras.getString(TRIP_TYPE) == getString(R.string.city_break)) {
+                radioGroupTripType.check(R.id.radioButtonCityBreak);
+            } else if (extras.getString(TRIP_TYPE) == getString(R.string.seaside)) {
+                radioGroupTripType.check(R.id.radioButtonSeaside);
+            } else if (extras.getString(TRIP_TYPE) == getString(R.string.mountains)) {
+                radioGroupTripType.check(R.id.radioButtonMountains);
+            }
+            seekBarPrice.setProgress(Integer.parseInt(extras.getString(PRICE)));
+            textViewSeekBar.setText("Price (" + seekBarPrice.getProgress() *
+                    MULTIPLICATION_FACTOR + " EUROS)");
+            startDateString = extras.getString(START_DATE);
+            endDateString = extras.getString(END_DATE);
+            buttonStartDate.setHint(startDateString);
+            buttonEndDate.setHint(endDateString);
+            ratingBar.setRating((float) Double.parseDouble(extras.getString(RATING)));
+        }
 
         buttonSaveTrip = findViewById(R.id.buttonSaveTrip);
         buttonSaveTrip.setOnClickListener(v -> {

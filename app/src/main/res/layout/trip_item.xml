@@ -2,53 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/small_margin"
     android:background="@color/design_default_color_primary"
     android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/imageViewTrip"
-        android:layout_width="@dimen/image_size"
-        android:layout_height="@dimen/image_size"
-        android:layout_marginLeft="@dimen/small_margin"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginBottom="@dimen/small_margin" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:layout_marginLeft="@dimen/medium_margin"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="@dimen/title_size"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textViewDestination"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size" />
-
-        <TextView
-            android:id="@+id/textViewRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="@dimen/rating_text_size" />
-
         <ImageView
-            android:id="@+id/imageViewBookmarked"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginRight="@dimen/small_margin"
+            android:id="@+id/imageViewTrip"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
             android:layout_marginBottom="@dimen/small_margin" />
-    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/textViewRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/rating_text_size" />
+
+            <ImageView
+                android:id="@+id/imageViewBookmarked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginRight="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/small_margin" />
+        </LinearLayout>
 </LinearLayout>

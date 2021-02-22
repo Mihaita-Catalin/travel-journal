@@ -32,8 +32,6 @@ public class HomeFragment extends Fragment {
 
     public static final int NEW_TRIP_ACTIVITY_REQUEST_CODE = 1;
 
-    int pos;
-
     private TripViewModel tripViewModel;
     private TripAdapter tripAdapter;
 
@@ -74,32 +72,31 @@ public class HomeFragment extends Fragment {
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
-//                        Intent i = new Intent(getActivity(), AddOrEditTripActivity.class);
-//                        pos = position;
-//                        final String[] title = new String[1];
-//                        final String[] destination = new String[1];
-//                        final String[] type = new String[1];
-//                        final int[] price = new int[1];
-//                        final String[] startDateString = new String[1];
-//                        final String[] endDateString = new String[1];
-//                        final double[] rating = new double[1];
-//                        tripViewModel.getAllTrips().observe(getActivity(), trips -> {
-//                            title[0] = trips.get(position).getTitle();
-//                            destination[0] = trips.get(position).getDestination();
-//                            type[0] = trips.get(position).getType();
-//                            price[0] = trips.get(position).getPrice() / AddOrEditTripActivity.MULTIPLICATION_FACTOR;
-//                            startDateString[0] = trips.get(position).getStartDate().toString();
-//                            endDateString[0] = trips.get(position).getEndDate().toString();
-//                            rating[0] = trips.get(position).getRating();
-//                        });
-//                        i.putExtra(AddOrEditTripActivity.TRIP_TITLE, title[0]);
-//                        i.putExtra(AddOrEditTripActivity.DESTINATION, destination[0]);
-//                        i.putExtra(AddOrEditTripActivity.TRIP_TYPE, type[0]);
-//                        i.putExtra(AddOrEditTripActivity.PRICE, Integer.toString(price[0]));
-//                        i.putExtra(AddOrEditTripActivity.START_DATE, startDateString[0]);
-//                        i.putExtra(AddOrEditTripActivity.END_DATE, endDateString[0]);
-//                        i.putExtra(AddOrEditTripActivity.RATING, Double.toString(rating[0]));
-//                        startActivityForResult(i, NEW_TRIP_ACTIVITY_REQUEST_CODE);
+                        Intent i = new Intent(getActivity(), AddOrEditTripActivity.class);
+                        final String[] title = new String[1];
+                        final String[] destination = new String[1];
+                        final String[] type = new String[1];
+                        final int[] price = new int[1];
+                        final String[] startDateString = new String[1];
+                        final String[] endDateString = new String[1];
+                        final double[] rating = new double[1];
+                        tripViewModel.getAllTrips().observe(getActivity(), trips -> {
+                            title[0] = trips.get(position).getTitle();
+                            destination[0] = trips.get(position).getDestination();
+                            type[0] = trips.get(position).getType();
+                            price[0] = trips.get(position).getPrice() / AddOrEditTripActivity.MULTIPLICATION_FACTOR;
+                            startDateString[0] = trips.get(position).getStartDate().toString();
+                            endDateString[0] = trips.get(position).getEndDate().toString();
+                            rating[0] = trips.get(position).getRating();
+                        });
+                        i.putExtra(AddOrEditTripActivity.TRIP_TITLE, title[0]);
+                        i.putExtra(AddOrEditTripActivity.DESTINATION, destination[0]);
+                        i.putExtra(AddOrEditTripActivity.TRIP_TYPE, type[0]);
+                        i.putExtra(AddOrEditTripActivity.PRICE, Integer.toString(price[0]));
+                        i.putExtra(AddOrEditTripActivity.START_DATE, startDateString[0]);
+                        i.putExtra(AddOrEditTripActivity.END_DATE, endDateString[0]);
+                        i.putExtra(AddOrEditTripActivity.RATING, Double.toString(rating[0]));
+                        startActivityForResult(i, NEW_TRIP_ACTIVITY_REQUEST_CODE);
                     }
                 })
         );

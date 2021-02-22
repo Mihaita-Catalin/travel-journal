@@ -8,13 +8,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.traveljournal.R;
+import mehdi.sakout.aboutpage.AboutPage;
 
 public class ContactFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_contact, container, false);
-        return root;
+        return new AboutPage(getActivity())
+                .isRTL(false)
+                .enableDarkMode(false)
+                .addEmail("pavel.mihaita.catalin2000@gmail.com")
+                .addFacebook("Pavel.Mihaita.Catalin")
+                .addGitHub("Mihaita-Catalin")
+                .addInstagram("pavelmihaita")
+                .create();
     }
 }
