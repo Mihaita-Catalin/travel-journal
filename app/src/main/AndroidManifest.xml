@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelJournal">
+        <activity android:name=".ViewTripActivity"></activity>
         <activity android:name=".AddOrEditTripActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

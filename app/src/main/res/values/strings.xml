@@ -25,4 +25,7 @@
     <string name="end_date">End Date</string>
     <string name="rating">Rating</string>
     <string name="save">Save</string>
+    <string name="enter_a_trip_title_error">Enter a trip title</string>
+    <string name="enter_a_destination_error">Enter a destination</string>
+    <string name="was_string">was</string>
 </resources>

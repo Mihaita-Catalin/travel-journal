@@ -28,4 +28,10 @@ class TripRepository {
             tripDao.insert(trip);
         });
     }
+
+    void updateTrip(Trip trip) {
+        TripRoomDatabase.databaseWriteExecutor.execute(() -> {
+            tripDao.updateTrip(trip);
+        });
+    }
 }

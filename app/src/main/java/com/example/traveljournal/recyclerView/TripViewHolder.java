@@ -2,7 +2,6 @@ package com.example.traveljournal.recyclerView;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,7 +16,7 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     private final TextView textViewDestination;
     private final TextView textViewRating;
     private final ImageView imageViewBookmarked;
-    private final LinearLayout linearLayoutTrip;
+
 
     public TripViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -27,7 +26,6 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
         textViewDestination = itemView.findViewById(R.id.textViewDestination);
         textViewRating = itemView.findViewById(R.id.textViewRating);
         imageViewBookmarked = itemView.findViewById(R.id.imageViewBookmarked);
-        linearLayoutTrip = itemView.findViewById(R.id.linearLayoutTrip);
     }
 
     public ImageView getImageViewTrip() {
@@ -48,9 +46,5 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView getImageViewBookmarked() {
         return imageViewBookmarked;
-    }
-
-    public LinearLayout getLinearLayoutTrip() {
-        return linearLayoutTrip;
     }
 }
